@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Embed Tableau Public Visualization</title>
+</head>
+<body>
+  <div id="tableauViz"></div>
+  <script type="text/javascript">
+    function loadTableauScript() {
+      var script = document.createElement('script');
+      script.src = 'https://public.tableau.com/javascripts/api/tableau-2.9.2.min.js';
+      script.onload = initViz; // Call initViz function once the script is loaded
+      document.head.appendChild(script);
+    }
+    function initViz() {
+      var containerDiv = document.getElementById('tableauViz');
+      var url = 'https://public.tableau.com/views/Airbnbstaysanalysis/Dashboard1';
+      var options = {
+        width: '800px',
+        height: '600px',
+        hideTabs: true,
+        hideToolbar: true
+      };
+      var viz = new tableau.Viz(containerDiv, url, options);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      loadTableauScript();
+    });
+  </script>
+</body>
+</html>
